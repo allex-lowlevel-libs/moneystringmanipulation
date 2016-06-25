@@ -1,0 +1,30 @@
+{
+  "name": "allex_lowlevelmoneystringmanipulationlib",
+  "version": "1.0.0",
+  "description": "Lib for handling strings that will describe money amounts",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allex-lowlevel-libs/moneystringmanipulation.git"
+  },
+  "devDependencies": {
+    "allex_checkslowlevellib": "1.x",
+    "allex_stringmanipulationlowlevellib": "2.x"
+  },
+  "keywords": [
+    "ecosystem:AllexJS",
+    "money",
+    "string",
+    "manipulation",
+    "lib"
+  ],
+  "author": "Andrija Petrovic <andrija.hers@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/allex-lowlevel-libs/moneystringmanipulation/issues"
+  },
+  "homepage": "https://github.com/allex-lowlevel-libs/moneystringmanipulation#readme"
+}
