@@ -1,5 +1,5 @@
 {
-  "name": "allex_lowlevelmoneystringmanipulationlib",
+  "name": "allex_moneystringmanipulationlowlevellib",
   "version": "1.0.0",
   "description": "Lib for handling strings that will describe money amounts",
   "main": "index.js",
