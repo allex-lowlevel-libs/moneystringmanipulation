@@ -12,7 +12,8 @@
   },
   "devDependencies": {
     "allex_checkslowlevellib": "1.x",
-    "allex_stringmanipulationlowlevellib": "2.x"
+    "allex_stringmanipulationlowlevellib": "2.x",
+    "chai": "3.x"
   },
   "keywords": [
     "ecosystem:AllexJS",
