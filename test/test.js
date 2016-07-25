@@ -4,7 +4,7 @@ var expect = require('chai').expect,
   lib = require('..')(checks.isString, checks.isNumber, stringmanipulation.prependToString),
   MoneyStringManipulator = lib.MoneyStringManipulator;
 
-describe('Testing', function () {
+describe('Testing \'MoneyStringManipulation\' lib', function () {
   it('2 decimal points toMoney', function () {
     var msm = new MoneyStringManipulator(2);
     expect(msm.toMoney('22.22')).to.equal(2222);
