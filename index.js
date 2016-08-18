@@ -15,10 +15,7 @@ function createLib(isString, isNumber, prependToString, isInteger) {
     }
 
     if (isNumber(str)) {
-      str+='';
-      if (str.indexOf('.') < 0) {
-        str+=('.'+prependToString('0', 2, ''));
-      }
+      return (isInteger(str)) ? str*100 : ~~(str*100);
     }
 
     if (!isString(str)) {
