@@ -1,5 +1,6 @@
 function createLib(isString, isNumber, prependToString) {
   'use strict';
+  //TODO: introduce a bit more strict checks on input params and possible conversions string <-> integer ...
 
   function toMoneyError(str, decimalplaces) {
     return new Error('Money string '+str+' has to be a positive decimal number with '+decimalplaces+' decimal places');
