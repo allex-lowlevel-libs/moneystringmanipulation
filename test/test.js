@@ -11,6 +11,7 @@ describe('Testing \'MoneyStringManipulation\' lib', function () {
     var msm = new MoneyStringManipulator(2);
     expect(msm.toMoney('22.22')).to.equal(2222);
     expect(msm.toMoney('153.35')).to.equal(15335);
+    expect(msm.toMoney(153.353212312312312313)).to.equal(15335);
     expect(msm.toMoney('0.89')).to.equal(89);
     expect(msm.toMoney('0.09')).to.equal(9);
     expect(msm.toMoney('0.00')).to.equal(0);
@@ -38,6 +39,7 @@ describe('Testing static functions', function () {
   it('2 decimal points toMoney', function () {
     expect(toMoney('22.22', 2)).to.equal(2222);
     expect(toMoney('153.35', 2)).to.equal(15335);
+    expect(toMoney(153.353212312312312313, 2)).to.equal(15335);
     expect(toMoney('0.89', 2)).to.equal(89);
     expect(toMoney('0.09', 2)).to.equal(9);
     expect(toMoney('0.00', 2)).to.equal(0);
