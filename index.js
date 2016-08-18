@@ -1,6 +1,5 @@
-function createLib(isString, isNumber, prependToString) {
+function createLib(isString, isNumber, prependToString, isInteger) {
   'use strict';
-  //TODO: introduce a bit more strict checks on input params and possible conversions string <-> integer ...
 
   function toMoneyError(str, decimalplaces) {
     return new Error('Money string '+str+' has to be a positive decimal number with '+decimalplaces+' decimal places');
@@ -9,9 +8,19 @@ function createLib(isString, isNumber, prependToString) {
 
   function toMoney (str, power, regexp, decimalplaces) {
     var parts;
+    if (!decimalplaces) throw new Error('No decimalplaces given');
+    if (!(isNumber(decimalplaces) && isInteger(decimalplaces) && decimalplaces > 0)) throw new Error ('decimalplaces should be a positive integer: '+decimalplaces);
     if (!power) {
-      throw new Error('MoneyStringManipulator already destroyed');
+      throw new Error('MoneyStringManipulator got no power');
     }
+
+    if (isNumber(str)) {
+      str+='';
+      if (str.indexOf('.') < 0) {
+        str+=('.'+prependToString('0', 2, ''));
+      }
+    }
+
     if (!isString(str)) {
       throw new Error('Input parameter has to be a string');
     }
@@ -30,7 +39,11 @@ function createLib(isString, isNumber, prependToString) {
     if (!power) {
       throw new Error('MoneyStringManipulator already destroyed');
     }
-    if (!(isNumber(num) && num>=0 && (~~(num) === num))) {
+
+    if (!isInteger(num)) throw new Error('num has to be a positive integer');
+    if (!isNumber(num)) num = parseInt(num,10);
+
+    if (!(num>=0 && (~~(num) === num))) {
       throw new Error('Input parameter has to be a positive integer');
     }
     return (~~(num/power)+'.'+prependToString('0', decimalplaces, ''+num%power));

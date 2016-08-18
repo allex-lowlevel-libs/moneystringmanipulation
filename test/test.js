@@ -1,7 +1,7 @@
 var expect = require('chai').expect,
   checks = require('allex_checkslowlevellib'),
   stringmanipulation = require('allex_stringmanipulationlowlevellib')(checks.isString),
-  lib = require('..')(checks.isString, checks.isNumber, stringmanipulation.prependToString),
+  lib = require('..')(checks.isString, checks.isNumber, stringmanipulation.prependToString, checks.isNumber),
   MoneyStringManipulator = lib.MoneyStringManipulator,
   toMoney = lib.toMoney,
   fromMoney = lib.fromMoney;
@@ -14,8 +14,8 @@ describe('Testing \'MoneyStringManipulation\' lib', function () {
     expect(msm.toMoney('0.89')).to.equal(89);
     expect(msm.toMoney('0.09')).to.equal(9);
     expect(msm.toMoney('0.00')).to.equal(0);
-    expect(msm.toMoney.bind(msm, 1050)).to.throw(Error);
-    expect(msm.toMoney.bind(msm, 1050.83)).to.throw(Error);
+    expect(msm.toMoney(1050)).to.equal(105000);
+    expect(msm.toMoney(1050.83)).to.equal(105083);
     expect(msm.toMoney.bind(msm, {string:'5'})).to.throw(Error);
     expect(msm.toMoney.bind(msm, '-125.353')).to.throw(Error);
     expect(msm.toMoney.bind(msm, '.353')).to.throw(Error);
@@ -41,8 +41,8 @@ describe('Testing static functions', function () {
     expect(toMoney('0.89', 2)).to.equal(89);
     expect(toMoney('0.09', 2)).to.equal(9);
     expect(toMoney('0.00', 2)).to.equal(0);
-    expect(toMoney.bind(null, 1050, 2)).to.throw(Error);
-    expect(toMoney.bind(null, 1050.83,2)).to.throw(Error);
+    expect(toMoney(1050, 2)).to.equal(105000);
+    expect(toMoney(1050.83,2)).to.equal(105083);
     expect(toMoney.bind(null, {string:'5'}, 2)).to.throw(Error);
     expect(toMoney.bind(null, '-125.353', 2)).to.throw(Error);
     expect(toMoney.bind(null, '.353', 2)).to.throw(Error);
