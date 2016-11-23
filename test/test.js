@@ -27,7 +27,7 @@ describe('Testing \'MoneyStringManipulation\' lib', function () {
     expect(msm.fromMoney(352)).to.equal('3.52');
     expect(msm.fromMoney(9)).to.equal('0.09');
     expect(msm.fromMoney(0)).to.equal('0.00');
-    expect(msm.fromMoney.bind(msm, -12353)).to.throw(Error, /positive/);
+    expect(msm.fromMoney(-12353)).to.be.equal('-123.53');
     expect(msm.fromMoney.bind(msm, ['125.353'])).to.throw(Error);
     expect(msm.fromMoney.bind(msm, '125.353')).to.throw(Error);
     msm.destroy();
@@ -53,7 +53,7 @@ describe('Testing static functions', function () {
     expect(fromMoney(352, 2)).to.equal('3.52');
     expect(fromMoney(9, 2)).to.equal('0.09');
     expect(fromMoney(0, 2)).to.equal('0.00');
-    expect(fromMoney.bind(null, -12353, 2)).to.throw(Error, /positive/);
+    expect(fromMoney(-12353, 2)).to.equal('-123.53');
     expect(fromMoney.bind(null, ['125.353'], 2)).to.throw(Error);
     expect(fromMoney.bind(null, '125.353', 2)).to.throw(Error);
   });

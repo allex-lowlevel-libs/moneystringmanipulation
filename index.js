@@ -40,10 +40,9 @@ function createLib(isString, isNumber, prependToString, isInteger) {
     if (!isInteger(num)) throw new Error('num has to be a positive integer');
     if (!isNumber(num)) num = parseInt(num,10);
 
-    if (!(num>=0 && (~~(num) === num))) {
-      throw new Error('Input parameter has to be a positive integer');
-    }
-    return (~~(num/power)+'.'+prependToString('0', decimalplaces, ''+num%power));
+    var negative = num < 0;
+    num = Math.abs(num);
+    return (negative ? '-' : '')+(~~(num/power)+'.'+prependToString('0', decimalplaces, ''+num%power));
   }
 
   function MoneyStringManipulator (decimalplaces) {
